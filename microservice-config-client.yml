@@ -11,7 +11,7 @@ spring:
    
 eureka:
   instance:
-    instance-id: microservice-config8201 #默认名称修改
+    instance-id: microservice-config-client #默认名称修改
     prefer-ip-address: true #访问路径可以显示IP地址
   client:
     register-with-eureka: true #是否注册
