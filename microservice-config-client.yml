@@ -8,27 +8,33 @@ spring:
   profiles: dev #开发环境
   application:
    name: microservice-config-client
-client:
+   
+eureka:
   instance:
-   instance-id: microservice-config8201 #默认名称修改
-   prefer-ip-address: true #访问路径可以显示IP地址
-  register-with-eureka: true #是否注册
-  fetch-registry: true
-  service-url:
-   defaultZone: http://eureka7001.com:7001/eureka/
+    instance-id: microservice-config8201 #默认名称修改
+    prefer-ip-address: true #访问路径可以显示IP地址
+  client:
+    register-with-eureka: true #是否注册
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/  # 注册中心访问地址
+
 
 ---
 server:
- port: 8202
+  port: 8202
 spring:
- profiles: test #测试环境
- application:
-  name: microservice-config-client
-client:
- instance:
-  instance-id: microservice-config8202 #默认名称修改
-  prefer-ip-address: true #访问路径可以显示IP地址
-  register-with-eureka: true #是否注册
-  fetch-registry: true
-  service-url:
-    defaultZone: http://eureka7001.com:7001/eureka/
+  profiles: test #开发环境
+  application:
+   name: microservice-config-client-test
+eureka:
+  instance:
+    instance-id: microservice-config8202 #默认名称修改
+    prefer-ip-address: true #访问路径可以显示IP地址
+  client:
+    register-with-eureka: true #是否注册
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/  # 注册中心访问地址
