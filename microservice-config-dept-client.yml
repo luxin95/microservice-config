@@ -1,28 +1,25 @@
 spring: 
   profiles:
     active: dev
-    
 ---
 server:
   port: 8001
-
 mybatis:
-  configlocation: classpath:mybatis/mybatis.cfg.xml #MybatisÅäÖÃÎÄ¼şËùÔÚÂ·¾¶
-  type-aliases-package: com.microservice.bean   #ËùÓĞbean±ğÃûËùÔÚ°ü
+  configlocation: classpath:mybatis/mybatis.cfg.xml #Mybatisé…ç½®æ–‡ä»¶æ‰€åœ¨è·¯å¾„
+  type-aliases-package: com.microservice.bean   #æ‰€æœ‰beanåˆ«åæ‰€åœ¨åŒ…
   mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml #mapperÓ³ÉäÎÄ¼ş
-
+  - classpath:mybatis/mapper/**/*.xml #mapperæ˜ å°„æ–‡ä»¶
 spring:
   profiles: dev
   application:
-    name: microservice-config-dept-client      #¶ÔÍâ±©Â¶µÄÎ¢·şÎñÃû×Ö
-  datasource:                         #Êı¾İ¿âÁ¬½Ó
+    name: microservice-config-dept-client      #å¯¹å¤–æš´éœ²çš„å¾®æœåŠ¡åå­—
+  datasource:                         #æ•°æ®åº“è¿æ¥
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
     url: jdbc:mysql://localhost:3306/springcloud?characterEncoding=utf8&amp;useSSL=false
     username: root
     password: root
-      #druidÁ¬½Ó³ØÅäÖÃ
+      #druidè¿æ¥æ± é…ç½®
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -34,28 +31,25 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
-    # ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters,È¥µô¼à¿Ø½çÃæsqlÎŞ·¨Í³¼Æ£¬¡®wall¡¯ÓÃÓÚ·À»ğÇ½
+    # é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filters,å»æ‰ç›‘æ§ç•Œé¢sqlæ— æ³•ç»Ÿè®¡ï¼Œâ€˜wallâ€™ç”¨äºé˜²ç«å¢™
     filters: stat,wall,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
     userGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
-
 eureka:
   instance:
-    instance-id: dept-service8001 #Ä¬ÈÏÃû³ÆĞŞ¸Ä
-    prefer-ip-address: true #·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾IPµØÖ·
+    instance-id: dept-service8001 #é»˜è®¤åç§°ä¿®æ”¹
+    prefer-ip-address: true #è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºIPåœ°å€
   client:
-    register-with-eureka: true #ÊÇ·ñ×¢²á
+    register-with-eureka: true #æ˜¯å¦æ³¨å†Œ
     fetch-registry: true
     service-url:
-     # ¼¯Èº:
+     # é›†ç¾¤:
       #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+     # å•æœº
+      defaultZone: http://localhost:7001/eureka/  # æ³¨å†Œä¸­å¿ƒè®¿é—®åœ°å€
 
-     # µ¥»ú
-      defaultZone: http://localhost:7001/eureka/  # ×¢²áÖĞĞÄ·ÃÎÊµØÖ·
-
-#InfoĞÅÏ¢ÏÔÊ¾
+#Infoä¿¡æ¯æ˜¾ç¤º
 info:
   app.name: config01
   companny.name: www.baidu.com
@@ -65,24 +59,22 @@ info:
 ---
 server:
   port: 8001
-
 mybatis:
-  configlocation: classpath:mybatis/mybatis.cfg.xml #MybatisÅäÖÃÎÄ¼şËùÔÚÂ·¾¶
-  type-aliases-package: com.microservice.bean   #ËùÓĞbean±ğÃûËùÔÚ°ü
+  configlocation: classpath:mybatis/mybatis.cfg.xml #Mybatisé…ç½®æ–‡ä»¶æ‰€åœ¨è·¯å¾„
+  type-aliases-package: com.microservice.bean   #æ‰€æœ‰beanåˆ«åæ‰€åœ¨åŒ…
   mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml #mapperÓ³ÉäÎÄ¼ş
-
+  - classpath:mybatis/mapper/**/*.xml #mapperæ˜ å°„æ–‡ä»¶
 spring:
   profiles: test
   application:
-    name: microservice-config-dept-client      #¶ÔÍâ±©Â¶µÄÎ¢·şÎñÃû×Ö
-  datasource:                         #Êı¾İ¿âÁ¬½Ó
+    name: microservice-config-dept-client      #å¯¹å¤–æš´éœ²çš„å¾®æœåŠ¡åå­—
+  datasource:                         #æ•°æ®åº“è¿æ¥
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
     url: jdbc:mysql://localhost:3306/springcloud?characterEncoding=utf8&amp;useSSL=false
     username: root
     password: root
-      #druidÁ¬½Ó³ØÅäÖÃ
+      #druidè¿æ¥æ± é…ç½®
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -94,28 +86,24 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
-    # ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters,È¥µô¼à¿Ø½çÃæsqlÎŞ·¨Í³¼Æ£¬¡®wall¡¯ÓÃÓÚ·À»ğÇ½
+    # é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filters,å»æ‰ç›‘æ§ç•Œé¢sqlæ— æ³•ç»Ÿè®¡ï¼Œâ€˜wallâ€™ç”¨äºé˜²ç«å¢™
     filters: stat,wall,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
     userGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
-
 eureka:
   instance:
-    instance-id: dept-service8001 #Ä¬ÈÏÃû³ÆĞŞ¸Ä
-    prefer-ip-address: true #·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾IPµØÖ·
+    instance-id: dept-service8001 #é»˜è®¤åç§°ä¿®æ”¹
+    prefer-ip-address: true #è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºIPåœ°å€
   client:
-    register-with-eureka: true #ÊÇ·ñ×¢²á
+    register-with-eureka: true #æ˜¯å¦æ³¨å†Œ
     fetch-registry: true
     service-url:
-     # ¼¯Èº:
+     # é›†ç¾¤:
       #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-
-     # µ¥»ú
-      defaultZone: http://localhost:7001/eureka/  # ×¢²áÖĞĞÄ·ÃÎÊµØÖ·
-
-#InfoĞÅÏ¢ÏÔÊ¾
+     # å•æœº
+      defaultZone: http://localhost:7001/eureka/  # æ³¨å†Œä¸­å¿ƒè®¿é—®åœ°å€
+#Infoä¿¡æ¯æ˜¾ç¤º
 info:
   app.name: config01
   companny.name: www.baidu.com
