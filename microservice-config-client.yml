@@ -5,30 +5,36 @@ spring:
 server:
   port: 8201
 spring:
-  profiles: dev #¿ª·¢»·¾³
+  profiles: dev #å¼€å‘ç¯å¢ƒ
   application:
-    name: microservice-config-client
-client:
+   name: microservice-config-client
+   
+eureka:
   instance:
-    instance-id: microservice-config8201 #Ä¬ÈÏÃû³ÆĞŞ¸Ä
-    prefer-ip-address: true #·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾IPµØÖ·
-  register-with-eureka: true #ÊÇ·ñ×¢²á
-  fetch-registry: true
-  service-url:
-    defaultZone: http://eureka7001.com:7001/eureka/
+    instance-id: microservice-config-client #é»˜è®¤åç§°ä¿®æ”¹
+    prefer-ip-address: true #è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºIPåœ°å€
+  client:
+    register-with-eureka: true #æ˜¯å¦æ³¨å†Œ
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/   # æ³¨å†Œä¸­å¿ƒè®¿é—®åœ°å€
+
 
 ---
 server:
   port: 8202
 spring:
-  profiles: test #²âÊÔ»·¾³
+  profiles: test #å¼€å‘ç¯å¢ƒ
   application:
-    name: microservice-config-client
-client:
+   name: microservice-config-client-test
+eureka:
   instance:
-    instance-id: microservice-config8202 #Ä¬ÈÏÃû³ÆĞŞ¸Ä
-    prefer-ip-address: true #·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾IPµØÖ·
-  register-with-eureka: true #ÊÇ·ñ×¢²á
-  fetch-registry: true
-  service-url:
-    defaultZone: http://eureka7001.com:7001/eureka/
+    instance-id: microservice-config8202 #é»˜è®¤åç§°ä¿®æ”¹
+    prefer-ip-address: true #è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºIPåœ°å€
+  client:
+    register-with-eureka: true #æ˜¯å¦æ³¨å†Œ
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/  # æ³¨å†Œä¸­å¿ƒè®¿é—®åœ°å€
